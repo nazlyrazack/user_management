@@ -16,6 +16,11 @@
         </meta>
     </head>
     <body>
+    	<?php
+
+
+
+    	?>
         <div class="jumbotron">
             <h2>
                 <center>
@@ -26,35 +31,88 @@
         <div class="container">
             <h4>
                 <center>
-                    User Login
+                    SignUp
                 </center>
             </h4>
         </div>
-        <form action="/action_page.php">
-            <div class="form-group">
-                <label for="email">
-                    Email address:
-                </label>
-                <input class="form-control" id="email" type="email">
-                </input>
-            </div>
-            <div class="form-group">
-                <label for="pwd">
-                    Password:
-                </label>
-                <input class="form-control" id="pwd" type="password">
-                </input>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">
-                        Remember me
+        <div class="col-md-4 offset-md-4">
+            <form method="post">
+                <div class="form-group">
+                    <label for="username">
+                        Username:
+                    </label>
+                    <input class="form-control" id="uname" type="text">
                     </input>
-                </label>
-            </div>
-            <button class="btn btn-primary" type="submit">
-                Submit
-            </button>
-        </form>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">
+                        First Name:
+                    </label>
+                    <input class="form-control" id="fname" type="text">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">
+                        Last name:
+                    </label>
+                    <input class="form-control" id="lname" type="text">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="email">
+                        Email address:
+                    </label>
+                    <input class="form-control" id="email" type="email">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">
+                        Password:
+                    </label>
+                    <input class="form-control" id="pwd" type="password">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="designation">
+                        Designation:
+                    </label>
+                    <input class="form-control" id="desig" type="text">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="joindate">
+                        Join Date:
+                    </label>
+                    <input class="form-control" id="join" type="text">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="experience">
+                        Experience:
+                    </label>
+                    <input class="form-control" id="exp" type="text">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="created_date">
+                        Created Date:
+                    </label>
+                    <input class="form-control" id="created_date" type="text">
+                    </input>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">
+                            Remember me
+                        </input>
+                    </label>
+                </div>
+                <button class="btn btn-primary" type="submit">
+                    Sign Up
+                </button>
+                <div class="space" style="padding-top: 50px">
+                </div>
+            </form>
+        </div>
     </body>
 </html>
