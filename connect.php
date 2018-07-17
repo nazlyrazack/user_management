@@ -33,6 +33,25 @@ class Database
             echo mysqli_error($this->connect_db);
         }
     }
+
+    public function login($uname,$pwd)
+    {
+    	$query=mysqli_query("SELECT * from user where uname='$uname' and password='$pwd' ");
+    	$result=mysqli_query($this->connect_db,$query);
+    	$user_data=mysqli_fetch_array($result);
+    	$count_row=$result->mysqli_num_rows() ;
+
+    	if($count_row==1)
+    	{
+    		$_SESSION['login'] = true;
+    		$_SESSION['id'] = $user_data['id'];
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
 }
 
 $db = new Database();

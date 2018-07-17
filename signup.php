@@ -24,6 +24,10 @@
         		color:red;
 
         	}
+        	.right
+        	{
+        		float :right;
+        	}
         </style>
     </head>
     <body>
@@ -96,6 +100,7 @@ if (isset($_POST['submit'])) {
     );
     if ($data->insertUser("user", $insert_data)) {
         echo "inserted successfully";
+        header("location:viewuserdata.php");
     }
 
 }
@@ -111,16 +116,24 @@ if (isset($_POST['submit'])) {
         <div class="container">
             <h4>
                 
-                    SignUp
+                   <center>SignUp</center> 
              </h4>
 
-                <a href = "userlogin.php"><button class="btn btn-primary" name="submit" type="submit">
-                    Login
-                </button></a>
+               
             
         </div>
+
+        <div class="right">
+        	<a href = "userlogin.php"><button class="btn btn-primary" name="submit" type="submit">
+                    Login
+                </button>
+            </a>
+        </div>
+
+        
+        </div>
         <div class="col-md-4 offset-md-4">
-            <form action="viewuserdata.php" method="post">
+            <form method="post" action="viewuserdata.php">
                 <div class="form-group">
                     <label for="username">
                         Username:
