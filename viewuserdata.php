@@ -1,80 +1,136 @@
-<?php 
+<?php
 
-	include "connect.php";
+    include_once('users.php');
 
-	$con =new Database();
+    $data = new Database();
 
-	$res=$con->login($uname,$pwd);
+    $userdata = new Users();
+
+        session_start();
+        if($_SESSION)
+        {
 
 
- ?>
+        	$id = $_SESSION['id'];
+    		$query="SELECT * from user where id='$id'";
+    		$result = mysqli_query($data->connection(),$query);
+
+    	}
 
 
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>
- 		
- 	</title>
- 	<meta content="width=device-width,initial-scale=1" name="viewport">
+    
+    if(isset($_POST['logout'])){  
+        session_destroy();  
+    }  
+    if(!($_SESSION)){  
+
+        header("Location:signup.php");  
+    }  
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+        <meta content="width=device-width,initial-scale=1" name="viewport">
             <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
                 <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
                 </script>
                 <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
                 </script>
-                <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+                <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https	://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
                 </script>
             </link>
         </meta>
-        <
- </head>
- <body>
-
- 	<div class="jumbotron">
+        <style>
+            .space
+        	{
+        		padding-top :50px;
+        	}
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron">
             <h2>
                 <center>
                     Bromlays Techventures
                 </center>
             </h2>
         </div>
-        <div>
-        	<table border=1>
-        		<tr>
-        			<th>username</th>
-        			<th>firstname</th>
-        			<th>lastname</th>
-        			<th>email</th>
-        			<th>designation</th>
-        			<th>join date</th>
-        			<th>experience</th>
-        			<th>created</th>
-        		</tr>
-        		<tr>
-        			<?php
-        				while($row=mysql_fetch_row($res))
-        				{
-        					?>
+        <h2>
+            Welcome
+            <?php echo $_SESSION['username'] ?>
+            !!
+        </h2>
+        <div class="col-md-12">
+            <table class="table table-bordered table-dark table-hover">
+                <?php
 
-        					<td><?php echo $row[1]?></td>
-        					<td><?php echo $row[2]?></td>
-        					<td><?php echo $row[3]?></td>
-         					<td><?php echo $row[4]?></td>
-        					<td><?php echo $row[8]?></td>
-        					<td><?php echo $row[9]?></td>
-        					<td><?php echo $row[10]?></td>
-        					<td><?php echo $row[12]?></td>
+        			while($row=mysqli_fetch_assoc($result))
+        			{
 
-       					
-
-
-
-
-        					<?php
-        				}
-        			?>
-        		</tr>
-        	</table>
+        		?>
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <td>
+                        <?php echo $row['username'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        firstname
+                    </th>
+                    <td>
+                        <?php echo $row['firstname'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Email
+                    </th>
+                    <td>
+                        <?php echo $row['email'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Designation
+                    </th>
+                    <td>
+                        <?php echo $row['designation'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Join date
+                    </th>
+                    <td>
+                        <?php echo $row['join_date'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Experience
+                    </th>
+                    <td>
+                        <?php echo $row['experience'] ?>
+                    </td>
+                </tr>
+                <?php
+        			}
+        		?>
+            </table>
+            <div class="space">
+            </div>
         </div>
- 
- </body>
- </html>
+        <div>
+            <div>
+                <form action="" method="post">
+                    <input name="logout" type="submit" value="Logout"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

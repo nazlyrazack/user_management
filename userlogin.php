@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,7 @@
             </h4>
         </div>
          <div class="col-md-4 offset-md-4">
-            <form action="viewuserdata.php" method="post">
+            <form method="post">
                 <div class="form-group">
                     <label for="username">
                         Username:
@@ -65,7 +67,7 @@ if (isset($pwd_error)) {
                     </p>
                 </div>
                
-                <button class="btn btn-primary" name="submit" type="submit">
+                <button class="btn btn-primary" name="login" type="submit">
                     Login
                 </button>
 
@@ -75,4 +77,36 @@ if (isset($pwd_error)) {
         </div>
 
 </body>
+
 </html>
+<?php
+	include "users.php";
+	
+
+
+	$users = new Users();
+	
+	{
+		if(isset($_POST['login']))
+		{
+			$uname = $_POST['uname'];
+			$pwd=$_POST['pwd'];
+			$user=$users->check_user($uname,$pwd);
+			// error_log(json_encode($user));
+			if($user)
+			{
+
+				session_start();
+				$_SESSION['id'] = $user['id'];
+    			$_SESSION['username'] = $user['username'];  
+    			// error_log(json_encode($_SESSION));
+            	
+				header("location:viewuserdata.php");
+			}
+			else
+			{
+				echo "<script>alert('username or password does not match')</script>";
+			}
+		}
+	}
+?>
