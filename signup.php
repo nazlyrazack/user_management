@@ -122,6 +122,13 @@ if (isset($_POST['submit'])) {
                 </center>
             </h2>
         </div>
+        <div class="right col-md-1">
+            <a href="userlogin.php">
+                <button class="btn btn-primary" name="submit" type="submit">
+                    Login
+                </button>
+            </a>
+        </div>
         <div class="container">
             <h4>
                 <center>
@@ -129,13 +136,7 @@ if (isset($_POST['submit'])) {
                 </center>
             </h4>
         </div>
-        <div class="right">
-            <a href="userlogin.php">
-                <button class="btn btn-primary" name="submit" type="submit">
-                    Login
-                </button>
-            </a>
-        </div>
+        
     </body>
 </html>
 <div class="col-md-4 offset-md-4">

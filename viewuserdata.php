@@ -21,11 +21,12 @@
     
     if(isset($_POST['logout'])){  
         session_destroy();  
-    }  
+      
     if(!($_SESSION)){  
 
         header("Location:signup.php");  
-    }  
+    } 
+    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,11 +46,16 @@
         <style>
             .space
         	{
-        		padding-top :50px;
+        		padding-top :30px;
         	}
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <form action="" method="post">
+                <input name="logout" type="submit" value="Logout"/>
+            </form>
+        </nav>
         <div class="jumbotron">
             <h2>
                 <center>
@@ -57,12 +63,14 @@
                 </center>
             </h2>
         </div>
-        <h2>
-            Welcome
-            <?php echo $_SESSION['username'] ?>
-            !!
-        </h2>
-        <div class="col-md-12">
+        <center>
+            <h2>
+                Welcome
+                <?php echo $_SESSION['username'] ?>
+                !!
+            </h2>
+        </center>
+        <div class="col-md-6 offset-md-3">
             <table class="table table-bordered table-dark table-hover">
                 <?php
 
@@ -125,12 +133,10 @@
             <div class="space">
             </div>
         </div>
-        <div>
-            <div>
-                <form action="" method="post">
-                    <input name="logout" type="submit" value="Logout"/>
-                </form>
-            </div>
-        </div>
+        <a href="editdetails.php?id=<?php echo $id ?>">
+            <button class="btn btn-primary" name="submit" type="submit">
+                Edit details
+            </button>
+        </a>
     </body>
 </html>
