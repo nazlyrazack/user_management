@@ -6,27 +6,16 @@
 
     $userdata = new Users();
 
-        session_start();
-        if($_SESSION)
-        {
 
 
-        	$id = $_SESSION['id'];
+        	$id = $_GET['id'];
     		$query="SELECT * from user where id='$id'";
     		$result = mysqli_query($data->connection(),$query);
 
-    	}
+    	
 
 
     
-    if(isset($_POST['logout'])){  
-        session_destroy();  
-      
-    if(!($_SESSION)){  
-
-        header("Location:signup.php");  
-    } 
-    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,11 +40,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <form action="" method="post">
-                <input name="logout" type="submit" value="Logout"/>
-            </form>
-        </nav>
+       
         <div class="jumbotron">
             <h2>
                 <center>
@@ -63,13 +48,7 @@
                 </center>
             </h2>
         </div>
-        <center>
-            <h2>
-                Welcome
-                <?php echo $_SESSION['username'] ?>
-                !!
-            </h2>
-        </center>
+        
         <div class="col-md-6 offset-md-3">
             <table class="table table-bordered table-dark table-hover">
                 <?php
@@ -134,10 +113,10 @@
             <div class="space">
             </div>
         </div>
-        <a href="editdetails.php?id=<?php echo $id ?>">
+        <!-- <a href="editdetails.php?id=<?php echo $id ?>">
             <button class="btn btn-primary" name="submit" type="submit">
                 Edit details
             </button>
-        </a>
+        </a> -->
     </body>
 </html>
