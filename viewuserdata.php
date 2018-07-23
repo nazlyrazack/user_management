@@ -12,6 +12,7 @@
 
 
         	$id = $_SESSION['id'];
+        	echo $id;
     		$query="SELECT * from user where id='$id'";
     		$result = mysqli_query($data->connection(),$query);
 
@@ -51,10 +52,14 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        	<div class="offset-md-11">
             <form action="" method="post">
-                <input name="logout" type="submit" value="Logout"/>
+               <button class="btn btn-dark" name="logout" type="submit">
+               Logout
+            </button>
             </form>
+        </div>
         </nav>
         <div class="jumbotron">
             <h2>
@@ -134,10 +139,12 @@
             <div class="space">
             </div>
         </div>
+        <div class= "offset-md-5">
         <a href="editdetails.php?id=<?php echo $id ?>">
-            <button class="btn btn-primary" name="submit" type="submit">
+            <button class="btn btn-dark" name="submit" type="submit">
                 Edit details
             </button>
         </a>
+    </div>
     </body>
 </html>

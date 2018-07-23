@@ -8,6 +8,7 @@ if (isset($_POST['submit'])) {
     $fname        = $_POST['fname'];
     $lname        = $_POST['lname'];
     $pwd          = $_POST['pwd'];
+    $pwd=md5($pwd);
     $email        = $_POST['email'];
     $desig         = $_POST['desig'];
     $join         = $_POST['join'];
@@ -115,6 +116,26 @@ if (isset($_POST['submit'])) {
         </style>
     </head>
     <body>
+    	<div>
+
+    		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    			<div class="offset-md-10">
+
+    			<a href="userlogin.php">
+             <button class="btn btn-dark" name="submit" type="submit">
+                    Login
+                </button>
+            </a>
+            
+            <a href="adminlogin.php">
+
+                <button class="btn btn-dark" name="submit" type="submit">
+                    Login as admin
+                </button>
+			</a>
+		</div>
+        </nav>
+    	</div>
         <div class="jumbotron">
             <h2>
                 <center>
@@ -122,13 +143,20 @@ if (isset($_POST['submit'])) {
                 </center>
             </h2>
         </div>
-        <div class="right col-md-1">
+       <!--  <div class="right col-md-1">
             <a href="userlogin.php">
                 <button class="btn btn-primary" name="submit" type="submit">
                     Login
                 </button>
             </a>
         </div>
+        <div class="right col-md-1">
+            <a href="adminlogin.php">
+                <button class="btn btn-primary" name="submit" type="submit">
+                    Login as admin
+                </button>
+            </a>
+        </div> -->
         <div class="container">
             <h4>
                 <center>

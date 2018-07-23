@@ -1,27 +1,27 @@
 <?php 
 
-	    include_once('users.php');
+        include_once('users.php');
 
-	    $data = new Database();
+        $data = new Database();
 
-	    $id=$_GET['id'];
+        $id=$_GET['id'];
 
-	    $query="SELECT * from user where id='$id'";
-    	$result = mysqli_query($data->connection(),$query);
+        $query="SELECT * from user where id='$id'";
+        $result = mysqli_query($data->connection(),$query);
 
-    	// while($row=mysqli_fetch_assoc($result))
+        // while($row=mysqli_fetch_assoc($result))
      //    {
-        	
+            
      //    }
 
         foreach ($result as $key => $res) {
-        	# code...
-        	$username = $res['username'];
-    		$firstname = $res['firstname'];
-    		$email = $res['email'];
-    		$designation = $res['designation'];
-    		$join_date = $res['join_date'];
-    		$experience = $res['experience'];
+            # code...
+            $username = $res['username'];
+            $firstname = $res['firstname'];
+            $email = $res['email'];
+            $designation = $res['designation'];
+            $join_date = $res['join_date'];
+            $experience = $res['experience'];
         }
 
  ?>
@@ -30,35 +30,37 @@
  <?php
 
  if(isset($_POST['update']))
-	{
+    {
 
-		$id=$_POST['id'];
-		$username = $_POST['username'];
-    	$firstname = $_POST['firstname'];
-    	$email = $_POST['email'];
-    	$designation = $_POST['designation'];
-    	$join_date = $_POST['join_date'];
-    	$experience = $_POST['experience'];
+        $id=$_POST['id'];
+        $username = $_POST['username'];
+        $firstname = $_POST['firstname'];
+        $email = $_POST['email'];
+        $designation = $_POST['designation'];
+        $join_date = $_POST['join_date'];
+        $experience = $_POST['experience'];
 
-		
-	
-
-
+        
+    
 
 
-    	$update_query = "update user set username='$username' , firstname = '$firstname' , email = '$email' , designation = '$designation' , join_date = '$join_date', experience = '$experience' where id ='$id'";
 
-    	$result = mysqli_query($data->connection(), $update_query) ;
+
+        $update_query = "update user set username='$username' , firstname = '$firstname' , email = '$email' , designation = '$designation' , join_date = '$join_date', experience = '$experience' where id ='$id'";
+
+        $result = mysqli_query($data->connection(), $update_query) ;
 echo $update_query;
 
-    	header("location:viewuserdata.php");
-	}
+        header("location:viewallusers.php");
+    }
 
  ?>
 
 
 
- <!DOCTYPE html>
+
+
+<!DOCTYPE html>
  <html>
  <head>
  	<title></title>
@@ -75,15 +77,7 @@ echo $update_query;
  </head>
 
  <body>
- 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="offset-md-11">
-            <form action="" method="post">
-               <button class="btn btn-dark" name="logout" type="submit">
-               Logout
-            </button>
-            </form>
-        </div>
-        </nav>
+ 	
         <div class="jumbotron">
             <h2>
                 <center>

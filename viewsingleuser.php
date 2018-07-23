@@ -109,14 +109,18 @@
                 
         			}
         		?>
+
+                
             </table>
             <div class="space">
             </div>
         </div>
-        <!-- <a href="editdetails.php?id=<?php echo $id ?>">
-            <button class="btn btn-primary" name="submit" type="submit">
+        <div class="offset-md-5">
+        <a href="editbyadmin.php?id=<?php echo $id ?>">
+            <button class="btn btn-dark" name="submit" type="submit">
                 Edit details
             </button>
-        </a> -->
+        </a>
+    </div>
     </body>
 </html>
